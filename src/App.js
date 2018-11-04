@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from '@/assets/images/logo.svg';
 import './App.css';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +32,8 @@ class App extends Component {
     // 该函数接收前一个状态值作为第1个参数， 并将更新后的值作为第2个参数
     this.setState((prevState, props) => ({
       data: prevState.data + prevState
-    }, console.log(prevState, props)))
+      // eslint-disable-next-line
+    }, console.log(prevState, props)));
   }
   render () {
     // 将val加入到state中实现数据的双向绑定
