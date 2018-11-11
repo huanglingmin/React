@@ -1,0 +1,34 @@
+html, body, #root
+  height 100%
+  .layout_box
+    box-sizing: border-box
+    min-height 100%
+    background-color #f4f5f5
+    // background url('../../assets/images/background.png') center center no-repeat
+    background-attachment: fixed
+    .top_nav
+      box-sizing: border-box
+      position: fixed
+      top 0
+      width 100%
+      z-index 100
+      height 60px
+      background-color #fff
+      text-align: center
+      line-height: 60px
+      border-bottom 1px solid #ddd
+      .edit_btn
+        float left
+        vertical-align: middle
+        margin-top: 14px
+      &+.content_box
+        margin: 0 auto
+        height 100%
+        max-width 1200px
+        padding-right: 20px
+        background-color: #fff
+        .line
+          height 60px
+      .left
+        width 200px
+        background-color #fff

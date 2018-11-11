@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
-import { Layout, Menu } from 'element-react';
+import { Row, Col, Input, Button, Menu, Dropdown, Icon, Layout, Breadcrumb } from 'antd';
+import { withRouter } from "react-router-dom";
+import './index.styl';
 
-class layout extends Component {
+const Search = Input.Search;
+const { SubMenu } = Menu;
+const { Header, Content, Footer, Sider } = Layout;
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">个人中心</a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">文章管理</a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">退出</a>
+    </Menu.Item>
+  </Menu>
+);
+
+class LayoutPag extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+
+    };
   }
   // 组件输出被渲染到 DOM 之后运行
   componentDidMount () {
@@ -14,64 +35,38 @@ class layout extends Component {
   componentWillUnmount () {
 
   }
-  onOpen () {
-
-  }
-
-  onClose () {
-
+  onSelect (index, path) {
+    this.props.history.push(index);
   }
   render () {
     return (
-      <Layout.Row className="tac">
-        <Layout.Col span={8}>
-          <h5>带 icon</h5>
-          <Menu defaultActive="2" className="el-menu-vertical-demo" onOpen={this.onOpen.bind(this)} onClose={this.onClose.bind(this)}>
-            <Menu.SubMenu index="1" title={<span><i className="el-icon-message"></i>导航一</span>}>
-              <Menu.ItemGroup title="分组一">
-                <Menu.Item index="1-1">选项1</Menu.Item>
-                <Menu.Item index="1-2">选项2</Menu.Item>
-              </Menu.ItemGroup>
-              <Menu.ItemGroup title="分组2">
-                <Menu.Item index="1-3">选项3</Menu.Item>
-              </Menu.ItemGroup>
-            </Menu.SubMenu>
-            <Menu.Item index="2"><i className="el-icon-menu"></i>导航二</Menu.Item>
-            <Menu.Item index="3"><i className="el-icon-setting"></i>导航三</Menu.Item>
-          </Menu>
-        </Layout.Col>
-        <Layout.Col span={8}>
-          <h5>不带 icon</h5>
-          <Menu defaultActive="2" className="el-menu-vertical-demo" onOpen={this.onOpen.bind(this)} onClose={this.onClose.bind(this)} theme="dark">
-            <Menu.SubMenu index="1" title="导航一">
-              <Menu.ItemGroup title="分组一">
-                <Menu.Item index="1-1">选项1</Menu.Item>
-                <Menu.Item index="1-2">选项2</Menu.Item>
-              </Menu.ItemGroup>
-              <Menu.ItemGroup title="分组2">
-                <Menu.Item index="1-3">选项3</Menu.Item>
-              </Menu.ItemGroup>
-            </Menu.SubMenu>
-            <Menu.Item index="2">导航二</Menu.Item>
-            <Menu.Item index="3">导航三</Menu.Item>
-          </Menu>
-        </Layout.Col>
-        <Layout.Col span={8}>
-          <h5>分组</h5>
-          <Menu mode="vertical" defaultActive="1" className="el-menu-vertical-demo">
-            <Menu.ItemGroup title="分组一">
-              <Menu.Item index="1"><i className="el-icon-message"></i>导航一</Menu.Item>
-              <Menu.Item index="2"><i className="el-icon-message"></i>导航二</Menu.Item>
-            </Menu.ItemGroup>
-            <Menu.ItemGroup title="分组二">
-              <Menu.Item index="3"><i className="el-icon-message"></i>导航三</Menu.Item>
-              <Menu.Item index="4"><i className="el-icon-message"></i>导航四</Menu.Item>
-            </Menu.ItemGroup>
-          </Menu>
-        </Layout.Col>
-        {this.props.children}
-      </Layout.Row>
+      <div className="layout_box">
+        <header className="top_nav">
+          <Row type="flex" className="row-bg" justify="space-around">
+            <Col span={6} offset={3}></Col>
+            <Col span={6}><Search
+              placeholder="input search text"
+              onSearch={value => console.log(value)}
+              enterButton
+            /></Col>
+            <Col span={6} offset={3}>
+              <Button type="primary" icon="edit" className="edit_btn">写文章</Button>
+              <Dropdown overlay={menu}>
+                <a className="ant-dropdown-link" href="#">
+                  我的<Icon type="down" />
+                </a>
+              </Dropdown>,
+            </Col>
+          </Row>
+        </header>
+        <div className="content_box">
+          <div className="line"></div>
+            {/* 路由出口 */}
+          <Row>{this.props.children}</Row>
+        </div>
+      </div>
     )
   }
 }
-export default layout;
+export default withRouter(LayoutPag);
+
