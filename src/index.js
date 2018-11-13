@@ -13,4 +13,8 @@ class App extends React.Component {
 };
 
 ReactDOM.render(<App />, document.getElementById('root'));
+//  +++++ 加入+++++
+if (module.hot) {
+  module.hot.accept();
+}
 registerServiceWorker();

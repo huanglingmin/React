@@ -31,7 +31,6 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "mobx": "^4.2.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -93,7 +92,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://192.168.1.101:3000/node",
+      "target": "http://10.255.1.123:3000/node",
       "changeOrigin": true,
       "pathRewrite": {
         "^/api": ""
@@ -102,8 +101,7 @@
   },
   "babel": {
     "presets": [
-      "react-app"
-    ]
+      "react-app"    ]
   },
   "eslintConfig": {
     "extends": "react-app"

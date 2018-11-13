@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import { Row, Col, Input, Button, Menu, Dropdown, Icon, Layout, Breadcrumb } from 'antd';
+import { Row, Col, Input, Button, Menu, Dropdown, Avatar } from 'antd';
 import { withRouter } from "react-router-dom";
 import './index.styl';
 
 const Search = Input.Search;
-const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
 const menu = (
   <Menu>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">个人中心</a>
+      <a rel="noopener noreferrer" href="http://www.alipay.com/">个人中心</a>
     </Menu.Item>
     <Menu.Item>
       <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">文章管理</a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">退出</a>
+      <a rel="noopener noreferrer" href="/login">退出</a>
     </Menu.Item>
   </Menu>
 );
@@ -43,7 +41,7 @@ class LayoutPag extends Component {
       <div className="layout_box">
         <header className="top_nav">
           <Row type="flex" className="row-bg" justify="space-around">
-            <Col span={6} offset={3}></Col>
+            <Col span={8} offset={1}>他狂由他狂 明月照大江 他横任他横 清风拂山岗</Col>
             <Col span={6}><Search
               placeholder="input search text"
               onSearch={value => console.log(value)}
@@ -52,8 +50,9 @@ class LayoutPag extends Component {
             <Col span={6} offset={3}>
               <Button type="primary" icon="edit" className="edit_btn">写文章</Button>
               <Dropdown overlay={menu}>
-                <a className="ant-dropdown-link" href="#">
-                  我的<Icon type="down" />
+                <a className="ant-dropdown-link" href="/login">
+                <Avatar style={{ backgroundColor: '#87d068' }} icon="user" />
+                {/* <Icon type="down" /> */}
                 </a>
               </Dropdown>,
             </Col>
@@ -61,7 +60,7 @@ class LayoutPag extends Component {
         </header>
         <div className="content_box">
           <div className="line"></div>
-            {/* 路由出口 */}
+          {/* 路由出口 */}
           <Row>{this.props.children}</Row>
         </div>
       </div>

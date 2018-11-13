@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button } from 'antd';
+import api from '@/api/index';
 
 const FormItem = Form.Item;
 
@@ -21,7 +22,16 @@ class HorizontalRegisterForm extends React.Component {
       }
     });
   }
-
+  register () {
+    api.post('user/register')
+      .then(e => {
+        this.$message.success(e.msg);
+        this.$router.push({ name: 'login' });
+      })
+      .catch(e => {
+        this.$message.error(e.msg);
+      });
+  }
   render () {
     const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
 
