@@ -1,12 +1,10 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import { Form, Input, Tooltip, Icon, Cascader, Select, Card, Checkbox, Button, AutoComplete, message } from 'antd';
+import { Form, Input, Tooltip, Icon, Cascader, Card, Checkbox, Button, message } from 'antd';
 import api from '@/api/index';
-import './register.styl';
+import '../register/register.styl';
 
 const FormItem = Form.Item;
-const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
 
 const residences = [{
   value: 'zhejiang',
@@ -32,7 +30,7 @@ const residences = [{
   }],
 }];
 
-class RegistrationForm extends React.Component {
+class ForgetForm extends React.Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -43,7 +41,7 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         values.residence = JSON.stringify(values.residence);
-        this.REGISTER(values);
+        this.FORGETFORM(values);
       }
     });
   }
@@ -70,9 +68,9 @@ class RegistrationForm extends React.Component {
     callback();
   }
 
-  // 注册帐号
-  REGISTER(values) {
-    api.post('user/register', values)
+  // 忘记密码
+  FORGETFORM(values) {
+    api.post('user/forgetPassword', values)
     .then(e => {
       message.success(e.msg);
       this.props.history.push('/login');
@@ -109,7 +107,7 @@ class RegistrationForm extends React.Component {
 
     return (
       <div className="register_box">
-        <Card title="注册" bordered={false} style={{ width: 400 }}>
+        <Card title="忘记密码" bordered={false} style={{ width: 400 }}>
           <Form onSubmit={this.handleSubmit} className="register-form">
             <FormItem
               {...formItemLayout}
@@ -137,7 +135,7 @@ class RegistrationForm extends React.Component {
             </FormItem>
             <FormItem
               {...formItemLayout}
-              label="密码"
+              label="新密码"
             >
               {getFieldDecorator('password', {
                 rules: [{
@@ -199,8 +197,7 @@ class RegistrationForm extends React.Component {
               )}
             </FormItem>
             <FormItem {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit">注册</Button>
-              {/* <Button type="primary" htmlType="submit">返回登陆</Button> */}
+              <Button type="primary" htmlType="submit">确定</Button>
             </FormItem>
           </Form>
         </Card>
@@ -209,6 +206,6 @@ class RegistrationForm extends React.Component {
   }
 }
 
-const WrappedRegistrationForm = Form.create()(RegistrationForm);
+const WrappedForgetForm = Form.create()(ForgetForm);
 
-export default withRouter(WrappedRegistrationForm);
+export default withRouter(WrappedForgetForm);

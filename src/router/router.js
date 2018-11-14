@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Layout from '@/components/layout';
 import Home from '@/views/Home';
 import Login from '@/views/login/login';
+import Register from '@/views/register/register';
+import ForgetPassword from '@/views/forgetPassword/forgetPassword';
 // const Home = (location, cb) => { require.ensure([], (require) => { cb(null, require('@/views/Home').default) }, 'Home') };
 
 const appRouter = (
@@ -13,12 +15,16 @@ const appRouter = (
     </Switch>
   </Layout>);
 
-// const otherRouter = 
+// const otherRouter = (
+//   <Route exact path="/login" component={Login} />
+// );
 
 const routers = (
   <Router>
     <Switch>
       <Route exact path="/login" component={Login} />
+      <Route exact path="/register" component={Register} />
+      <Route exact path="/forgetPassword" component={ForgetPassword} />
       <Route exact path="/" render={props => appRouter} />
     </Switch>
   </Router>
