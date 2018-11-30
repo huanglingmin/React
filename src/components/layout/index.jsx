@@ -27,7 +27,7 @@ class LayoutPag extends Component {
   }
   // 组件输出被渲染到 DOM 之后运行
   componentDidMount () {
-
+    
   }
   // 组价被移除是触发
   componentWillUnmount () {
@@ -61,7 +61,7 @@ class LayoutPag extends Component {
         <div className="content_box">
           <div className="line"></div>
           {/* 路由出口 */}
-          <Row>{this.props.children}</Row>
+          {/* <Row>{this.props.children}</Row> */}
         </div>
       </div>
     )
