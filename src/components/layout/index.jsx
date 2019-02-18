@@ -48,7 +48,7 @@ class LayoutPag extends Component {
               enterButton
             /></Col>
             <Col span={6} offset={3}>
-              <Button type="primary" icon="edit" className="edit_btn">写文章</Button>
+              <Button type="primary" icon="edit" className="edit_btn" onClick={() => {this.props.history.push('/richEditor')}}>写文章</Button>
               <Dropdown overlay={menu}>
                 <a className="ant-dropdown-link" href="/login">
                 <Avatar style={{ backgroundColor: '#87d068' }} icon="user" />
@@ -61,7 +61,7 @@ class LayoutPag extends Component {
         <div className="content_box">
           <div className="line"></div>
           {/* 路由出口 */}
-          {/* <Row>{this.props.children}</Row> */}
+          <Row>{this.props.children}</Row>
         </div>
       </div>
     )

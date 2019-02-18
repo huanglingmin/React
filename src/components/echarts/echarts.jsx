@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 import { Row, Col, Card } from 'antd';
 import './echarts.styl';
 
@@ -10,9 +11,10 @@ import 'echarts/lib/chart/pie';
 // 引入提示框和标题组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
-
+@withRouter
 class Echarts extends Component {
   componentDidMount () {
+    console.log(this.props, 'echarts')
     this.barEcharts();
     this.pieEcharts();
   }
